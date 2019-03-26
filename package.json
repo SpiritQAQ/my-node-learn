@@ -1,0 +1,24 @@
+{
+  "name": "my-node",
+  "version": "1.0.0",
+  "description": "node test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "byf",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "express": "^4.16.4",
+    "mysql": "^2.16.0",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "connect-timeout": "^1.9.0",
+    "cors": "^2.8.5",
+    "express-http-proxy": "^1.5.1",
+    "http-proxy-middleware": "^0.19.1",
+    "request-promise": "^4.2.4"
+  }
+}
