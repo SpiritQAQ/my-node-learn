@@ -47,6 +47,7 @@ request({
   cookie = cookie[0].split(";")[0]
   HEADERS.Cookie = cookie
   console.log(HEADERS.Cookie )
+  HEADERS["Content-Type"]='application/json;charset=UTF-8'
 }
   
 )
@@ -59,9 +60,11 @@ app.get('/getLibrarys', async (req, res) => {
   const url = `http://hbg.htkj365.com/api/library/employee/get/now/libraryList`
   fetch("post",url, res)
 })
-app.get(`/borrowing/${id}`, async (req, res) => {
+app.get(`/borrowing`, async (req, res) => {
+  // console.log(req.originalUrl.split("id="))
+  let ID = req.originalUrl.split("id=")[1]
   const url = `http://hbg.htkj365.com/api/libraryfinance/card/instance/get/borrowing`
-  fetch("post",url, res,id)
+  fetch("post",url, res,{id:ID})
 })
 // app.get('/', async (req, res) => {
 //   const url = `https://c.y.qq.com/musichall/fcgi-bin/fcg_yqqhomepagerecommend.fcg?g_tk=5381&uin=0&format=json&inCharset=utf-8&outCharset=utf-8&notice=0&platform=h5&needNewCode=1&_=${+ new Date()}`

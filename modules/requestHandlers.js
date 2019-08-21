@@ -62,12 +62,22 @@ function themesList(){
           family:item.FAMILY,
           familyPic:item.FAMILY_PIC,
           interact:item.INTERACT,
-          interactPic:item.INTERACT_PIC
+          interactPic:item.INTERACT_PIC,
+          bookList:[]
         }
       )
       themeNameList.push(item.THEME)
     }
   })
+  // allData.forEach(item=>{
+  //   result.forEach(t=>{
+  //     if(item.THEME == t.theme){
+  //       t.bookList.push({
+
+  //       })
+  //     }
+  //   })
+  // })
   // return JSON.stringify(themeNameList)
   return JSON.stringify(result)
   // let result = []
