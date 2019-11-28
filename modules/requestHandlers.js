@@ -1,29 +1,31 @@
-function start(){
+function start() {
   console.log("request handler 'start' was called")
   return "Hello start "
 }
-function upload(){
+
+function upload() {
   console.log("request handler 'upload' was called")
   return "Hello upload "
-  
+
 }
-function index(){
+
+function index() {
   console.log("request handler 'index' was called")
   return "Hello index "
-  
+
 }
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password : '123456',
-  port:3306,
-  database : 'test'
- });
- connection.connect();
- var allData  = []
- connection.query('select * from xbk_theme_book', function(err, rows, fields) {
+  password: '123456',
+  port: 3306,
+  database: 'test'
+});
+connection.connect();
+var allData = []
+connection.query('select * from xbk_theme_book', function (err, rows, fields) {
   if (err) throw err;
   // console.log(fields)
   // for(var i= 0,usr;usr=rows[i++];){
@@ -31,41 +33,40 @@ var connection = mysql.createConnection({
   //     // console.log(usr)
   //     data.push(usr)
   // }
-  allData = rows 
- });
+  allData = rows
+});
 
-function getJingduList(){
-  let data  = []
+function getJingduList() {
+  let data = []
   allData
-  if(data.length>0){
+  if (data.length > 0) {
     return JSON.stringify(data)
-  }else{
+  } else {
     return '数据为空'
   }
 }
-function themesList(){
+
+function themesList() {
   let themeNameList = []
   // return JSON.stringify(allData)
   let result = []
-  allData.forEach(item=>{
-    if(themeNameList.indexOf(item.THEME)==-1){//如果list中不存在该主题
-      result.push(
-        {
-          theme:item.THEME,
-          themeText:item.THEME_TEXT,
-          guide:item.GUIDE,
-          guidePic:item.GUIDE_PIC,
-          paint:item.PAINT,
-          paintPic:item.PAINT_PIC,
-          story:item.STORY,
-          storyPic:item.STORY_PIC,
-          family:item.FAMILY,
-          familyPic:item.FAMILY_PIC,
-          interact:item.INTERACT,
-          interactPic:item.INTERACT_PIC,
-          bookList:[]
-        }
-      )
+  allData.forEach(item => {
+    if (themeNameList.indexOf(item.THEME) == -1) { //如果list中不存在该主题
+      result.push({
+        theme: item.THEME,
+        themeText: item.THEME_TEXT,
+        guide: item.GUIDE,
+        guidePic: item.GUIDE_PIC,
+        paint: item.PAINT,
+        paintPic: item.PAINT_PIC,
+        story: item.STORY,
+        storyPic: item.STORY_PIC,
+        family: item.FAMILY,
+        familyPic: item.FAMILY_PIC,
+        interact: item.INTERACT,
+        interactPic: item.INTERACT_PIC,
+        bookList: []
+      })
       themeNameList.push(item.THEME)
     }
   })
@@ -94,8 +95,16 @@ function themesList(){
   // return JSON.stringify(result)
 
 }
-exports.start = start 
-exports.upload = upload 
-exports.index = index 
-exports.getJingduList = getJingduList
-exports.themesList = themesList
+// exports.start = start 
+// exports.upload = upload 
+// exports.index = index 
+// exports.getJingduList = getJingduList
+// exports.themesList = themesList
+
+module.exports = {
+  start,
+  upload,
+  index,
+  getJingduList,
+  themesList
+}
