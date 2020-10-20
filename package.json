@@ -14,7 +14,8 @@
     "mysql": "^2.16.0",
     "node-xlsx": "^0.15.0",
     "qrcode": "^1.4.2",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "xlsx": "^0.16.7"
   },
   "devDependencies": {
     "connect-timeout": "^1.9.0",
